@@ -7,3 +7,8 @@ $config['title'] = 'Default Title';
 $config['copyright'] = 'Default Copyright';
 $config['masthead'] = 'Default MastHead';
 $config['theme'] = 'themes/bootswatch/';
+
+$config['navi'] = array  (
+    'news' => 'News',
+    'news/create' => 'Add news'
+);
