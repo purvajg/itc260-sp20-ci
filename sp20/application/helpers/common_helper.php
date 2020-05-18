@@ -112,16 +112,41 @@ if(!function_exists('bootswatchFeedback'))
 	} 
 
 	if(!function_exists('makeLinks'))
-	#
 	{	
 		function makeLinks($nav)
 		{
 			$myReturn = '';
 			foreach($nav as $key => $value)
 			{
-				$myReturn = '<li><a href="' . site_url($key) . '">' . value . '</a></li>' . PHP_EOL;
+				
+				if(sizeof($value['children'])==0) {
+					$myReturn .= '<li><a href="' . site_url($key) . '">' . $value['name'] . '</a></li>' . PHP_EOL;
+				} else {
+					$result = '';
+					foreach($value['children'] as $k => $arr )
+					{
+						$result .= '<li><a href="'.site_url($key.'?choice='.$arr['name']).'">'.$arr['name'] . '</a></li>' . PHP_EOL;
+					}
+					$myReturn .= '<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$value['name'].' <span class="caret"></span></a>
+					<ul class="dropdown-menu">'. PHP_EOL . $result . 
+					'</ul>
+					</li>';
+
+				// 	  <li><a href="#">Action</a></li>
+				// 	  <li><a href="#">Another action</a></li>
+				// 	  <li><a href="#">Something else here</a></li>
+				// 	  <li role="separator" class="divider"></li>
+				// 	  <li><a href="#">Separated link</a></li>
+				// 	  <li role="separator" class="divider"></li>
+				// 	  <li><a href="#">One more separated link</a></li>
+				// 	</ul>
+				//   </li>'
+				}
+				//$myReturn .= '<li><a href="' . site_url($key) . '">' . $value . '</a></li>' . PHP_EOL;
 			}
-			return myReturn;
+
+			return $myReturn;
 			// return 'is this working';
 		}
 		
