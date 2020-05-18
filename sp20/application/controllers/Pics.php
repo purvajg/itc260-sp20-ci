@@ -19,7 +19,7 @@ class Pics extends CI_Controller {
         {        
                 $tags = '';
                 if(isset($_GET['choice'])) {
-                  $tags = rawurlencode($_GET['choice']);
+                  $tags = rawurlencode($_GET['choice']);//to avoid the error caused by blank spaces in tags we used rawurlencode
                 } else {
                   $tags = 'pictures';
                 }

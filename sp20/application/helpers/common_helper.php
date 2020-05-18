@@ -158,6 +158,15 @@ if(!function_exists('bootswatchFeedback'))
 		{	//here we are setting the term search by the user in 'choice' which will be identified
 			//by the index() of Pics.php. That choice will become tag in index() and will be passed
 			//to get_pics(tags) of Pics_model.php
+
+			//form action="'.site_url('pics') is added because if the user is at News or 
+			//Add news page then the search does not work, because the GET was not getting
+			//any value form those pages. So by adding action we are first making the user
+			//go to the Pics page, and then on this page the GET gets the value from choice 
+			//entered by the user.
+
+			//to place the Search button in line with Search text bar we added input class to
+			//div class="form-group mb-2" and button outside of the div
 			return
 			'<li><form action="'.site_url('pics').'" method="get" class="form-inline">
 			<div class="form-group mb-2">
