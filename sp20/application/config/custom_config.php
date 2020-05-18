@@ -16,7 +16,19 @@ $config['flickrKey'] = 'accba0c4f631d6df0bc0db0b5a75f9b1';
 //     'pics' => 'Pics'
 // );
 
-$config['nav1'] = array  (//menus appearing in the header
+
+//The names and links are mapped in an array
+//For Pics we need to create a dropdown, for that , the dropdown items should get  displayed
+//only in the when the user clicks the Pics button. If the name and links are placed outside 
+// like this:
+//     'news' => 'News',
+//     'news/create' => 'Add news',
+//     'pics' => 'Pics'
+//     'dogs' => 'Dogs'
+//     'tiger' => 'Tiger'
+//then dogs tiger will be displayed in the navbar itself. We dont want that, so we create 
+//an inner array in pics where we add the items of dropdown.
+$config['nav1'] = array  (//menus appearing in the header//links that would show up in the  browser mapped to their names
     'news' => array(
         'name' =>  'News',
         'children' => array()
@@ -45,5 +57,6 @@ $config['nav1'] = array  (//menus appearing in the header
                 'children'  => array()
             )
         )
-    )
+    ),
+        
 );

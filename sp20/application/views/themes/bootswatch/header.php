@@ -12,6 +12,7 @@
     <![endif]-->
   </head>
   <body>
+ 
      <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -21,12 +22,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
           <?=makeLinks($this->config->item('nav1'))?>
-        
-		<!-- <li class="active"><a href="#" title="">Active Link</a></li> -->
+          <?=picsSearchBar()?>
           </ul>
         </div>
       </div>

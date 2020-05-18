@@ -152,4 +152,20 @@ if(!function_exists('bootswatchFeedback'))
 		
 	}
 
+	if(!function_exists('picSearchBar'))
+	{
+		function picsSearchBar()
+		{	//here we are setting the term search by the user in 'choice' which will be identified
+			//by the index() of Pics.php. That choice will become tag in index() and will be passed
+			//to get_pics(tags) of Pics_model.php
+			return
+			'<li><form method="get" class="form-inline">
+			<div class="form-group mb-2">
+			<input class="form-control mr-sm-2" type="search" name="choice" placeholder="Search Pictures" aria-label="Search">
+			</div>	
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form></li>';
+		}
+	}
+
 }#end bootswatchFeedback()

@@ -12,16 +12,19 @@ class Pics extends CI_Controller {
 
         }
 
+        //we are using GET to fetch the tag entered by the user or by one of the options
+        //from the dropdown menu
+        //this tag is then sent to the get_pics method pf Pics_model.php
         public function index()
         {        
                 $tags = '';
                 if(isset($_GET['choice'])) {
                   $tags = $_GET['choice'];
                 } else {
-                  $tags = 'deers';
+                  $tags = 'pictures';
                 }
                 
-                $this->config->set_item('title', 'Kittens');//page title for browser
+                $this->config->set_item('title', 'Pictures');//page title for browser
                 //$data['title'] = 'Kittens ';//Page title inside page      
 
                 $pics = $this->pics_model->get_pics($tags);
