@@ -19,7 +19,7 @@ class Pics extends CI_Controller {
         {        
                 $tags = '';
                 if(isset($_GET['choice'])) {
-                  $tags = $_GET['choice'];
+                  $tags = rawurlencode($_GET['choice']);
                 } else {
                   $tags = 'pictures';
                 }

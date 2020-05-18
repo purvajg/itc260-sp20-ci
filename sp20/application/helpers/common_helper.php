@@ -159,7 +159,7 @@ if(!function_exists('bootswatchFeedback'))
 			//by the index() of Pics.php. That choice will become tag in index() and will be passed
 			//to get_pics(tags) of Pics_model.php
 			return
-			'<li><form method="get" class="form-inline">
+			'<li><form action="'.site_url('pics').'" method="get" class="form-inline">
 			<div class="form-group mb-2">
 			<input class="form-control mr-sm-2" type="search" name="choice" placeholder="Search Pictures" aria-label="Search">
 			</div>	
