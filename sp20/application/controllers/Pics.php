@@ -20,11 +20,14 @@ class Pics extends CI_Controller {
                 $tags = '';
                 if(isset($_GET['choice'])) {
                   $tags = rawurlencode($_GET['choice']);//to avoid the error caused by blank spaces in tags we used rawurlencode
+                  $this->config->set_item('title', $tags);//page title for browser
                 } else {
                   $tags = 'pictures';
+                  $this->config->set_item('title', 'Pictures');
                 }
                 
-                $this->config->set_item('title', 'Pictures');//page title for browser
+                //$this->config->set_item('title', 'Pictures');//page title for browser
+
                 //$data['title'] = 'Kittens ';//Page title inside page      
 
                 $pics = $this->pics_model->get_pics($tags);
