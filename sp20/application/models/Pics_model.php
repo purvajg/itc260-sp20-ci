@@ -9,17 +9,25 @@ class Pics_model extends CI_Model {
                 $this->load->database();
         }
 
-        public function get_pics($tags = FALSE)
+        public function get_pics($slug = FALSE)
         {
-                //should be passed in QueryString/controller
-                //$tags = 'bears,polar';
+                if ($slug === FALSE)
+                {
+                        $query = $this->db->get('sp20_pics');
+                        return $query->result_array();
+                }
 
+                $query = $this->db->get_where('sp20_pics', array('slug' => $slug));
+                return $query->row_array();
+        }
+
+        public function set_pics($slug = FALSE)
+        {
                 $api_key = $this->config->item('flickrKey');
-
-                $perPage = 50;
+                $perPage = 25;
                 $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search';
                 $url.= '&api_key=' . $api_key;
-                $url.= '&tags=' . $tags;
+                $url.= '&tags=' . $slug;
                 $url.= '&per_page=' . $perPage;
                 $url.= '&format=json';
                 $url.= '&nojsoncallback=1';
@@ -27,26 +35,5 @@ class Pics_model extends CI_Model {
                 $response = json_decode(file_get_contents($url));
                 $pics = $response->photos->photo;
                 return $pics;
-        }
-
-        public function set_news()
-        {
-                $this->load->helper('url');
-
-                $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
-                $data = array(
-                        'title' => $this->input->post('title'),
-                        'slug' => $slug,
-                        'text' => $this->input->post('text')
-                );
-
-                //return $this->db->insert('sp20_news', $data);
-
-                if($this->db->insert('sp20_news', $data)){//return slug- send to view page
-                        return $slug;
-                }else{//return false
-                        return false;
-                }
         }
 }

@@ -61,3 +61,4 @@ $route['news'] = 'news';
 
 //routes for pics
 $route['pics'] = 'pics';
+$route['pics/(:any)'] = 'pics/view/$1';
